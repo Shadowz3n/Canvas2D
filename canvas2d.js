@@ -1,3 +1,27 @@
+/* Como usar
+	$(".loadCanvas").canvas2D({
+		canvas:
+		{
+			width:500,
+			height:200
+		},
+		object:
+		{
+			color:"#ff0000",
+			alpha:1,
+			borderWidth:15,
+			border:"black",
+			margin:[0,25],
+			circle:
+			{
+				size:50,
+				startAngle:0,
+				endAngle:180
+			}
+		}
+	});
+*/
+
 window.jQuery || document.write(unescape('%3Cscript src="http://jquery.com/jquery-wp-content/themes/jquery/js/jquery-1.9.1.min.js"%3E%3C/script%3E'))
 /* Canvas Plugin */
 $.fn.canvas2D = function(options)
@@ -6,7 +30,7 @@ $.fn.canvas2D = function(options)
 	var div_canvas 					= $(this);
 	var div_width					= $(this).width();
 	var div_height					= $(this).height();
-	if($(div_canvas).length 		== 0){return false};
+	if($(div_canvas).length 			== 0){return false};
 	
 	/* Extends */
 	var defaults =
@@ -165,29 +189,3 @@ $.fn.canvas2D = function(options)
 		canvas.stroke();
 	}
 }
-
-/* Como usar
-
-	$(".loadCanvas").canvas2D({
-		canvas:
-		{
-			width:500,
-			height:200
-		},
-		object:
-		{
-			color:"#ff0000",
-			alpha:1,
-			borderWidth:15,
-			border:"black",
-			margin:[0,25],
-			circle:
-			{
-				size:50,
-				startAngle:0,
-				endAngle:180
-			}
-		}
-	});
-
-*/
