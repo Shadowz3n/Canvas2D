@@ -22,7 +22,6 @@
 	});
 */
 
-window.jQuery || document.write(unescape('%3Cscript src="http://jquery.com/jquery-wp-content/themes/jquery/js/jquery-1.9.1.min.js"%3E%3C/script%3E'))
 /* Canvas Plugin */
 $.fn.canvas2D = function(options)
 {
@@ -88,7 +87,7 @@ $.fn.canvas2D = function(options)
 	$(div_canvas).append("<canvas width='"+opts['canvas'].width+"' height='"+opts['canvas'].height+"'></canvas>");
 	
 	/* Get Context */
-	var canvas 		= $(div_canvas).find("canvas")[0].getContext("2d");
+	var canvas 		= $(div_canvas)[0].getContext("2d");
 	canvas.beginPath();
 	
 	/* Canvas cases */
@@ -189,3 +188,21 @@ $.fn.canvas2D = function(options)
 		canvas.stroke();
 	}
 }
+
+
+$(".canvasExample").canvas2D({
+		object:
+		{
+			color:"#ff0000",
+			alpha:1,
+			borderWidth:15,
+			border:"black",
+			margin:[0,25],
+			circle:
+			{
+				size:50,
+				startAngle:0,
+				endAngle:180
+			}
+		}
+	});
