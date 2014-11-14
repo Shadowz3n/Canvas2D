@@ -23,8 +23,7 @@
 */
 
 /* Canvas Plugin */
-$.fn.canvas2D = function(options)
-{
+$.fn.canvas2D = function(options){
 	/* Div Info */
 	var div_canvas 					= $(this);
 	var div_width					= $(this).width();
@@ -32,41 +31,34 @@ $.fn.canvas2D = function(options)
 	if($(div_canvas).length 			== 0){return false};
 	
 	/* Extends */
-	var defaults =
-	{
-		canvas:
-		{
+	var defaults =	{
+		canvas: {
 			width:div_width,
 			height:div_height,
 			backgroundImage:"",
 			backgroundRepeat:""
 		},
-		object:
-		{
+		object: {
 			color:false,
 			alpha:1,
 			borderWidth:1,
 			margin:[0,0],
 			lineStyle:"square",
-			circle:
-			{
+			circle:	{
 				size:10,
 				angle:360,
 				startAngle:0,
 				endAngle:360
 			},
-			square:
-			{
+			square:	{
 				width:10,
 				height:10
 			},
-			custom:
-			{
+			custom:	{
 				move:[[0,50]],
 				type:"quadratic"
 			},
-			text:
-			{
+			text: {
 				font: "Arial",
 				content: "",
 				size: 12,
@@ -74,8 +66,7 @@ $.fn.canvas2D = function(options)
 				textAlign: "center",
 				textBaseline: "middle"
 			},
-			image:
-			{
+			image: {
 				width:100,
 				height:50
 			}
@@ -91,11 +82,9 @@ $.fn.canvas2D = function(options)
 	canvas.beginPath();
 	
 	/* Canvas cases */
-	if(opts['canvas'].backgroundImage)
-	{
+	if(opts['canvas'].backgroundImage){
 		var imageObj = new Image();
-		imageObj.onload = function()
-		{
+		imageObj.onload = function(){
 			var pattern = canvas.createPattern(imageObj, opts['canvas'].backgroundRepeat);
 			canvas.rect(0, 0, opts['canvas'].width, opts['canvas'].height);
 			canvas.fillStyle = pattern;
@@ -104,10 +93,8 @@ $.fn.canvas2D = function(options)
 		imageObj.src = opts['canvas'].backgroundImage;
 	}
 	
-	if(opts['object'])
-	{
-		if(opts['object']['circle'])
-		{
+	if(opts['object']){
+		if(opts['object']['circle']){
 			canvas.arc
 			(
 				Number(opts['object'].margin[0] + opts['object']['circle'].size + opts['object'].borderWidth),
@@ -119,8 +106,7 @@ $.fn.canvas2D = function(options)
 			);
 		}
 		
-		if(opts['object']['square'])
-		{
+		if(opts['object']['square']){
 			canvas.rect
 			(
 				Number(opts['object'].margin[0] + opts['object'].borderWidth),
@@ -130,8 +116,7 @@ $.fn.canvas2D = function(options)
 			);
 		}
 		
-		if(opts['object']['custom'])
-		{
+		if(opts['object']['custom']){
 			canvas.moveTo(opts['object']['custom']['move'][0][0],opts['object']['custom']['move'][0][1]);
 			for(i=1; i<opts['object']['custom'].move.length; i++)
 			{
@@ -151,17 +136,14 @@ $.fn.canvas2D = function(options)
 			}
 		}
 		
-		if(opts['object']['image'])
-		{
+		if(opts['object']['image']){
 			imageObj = new Image();
-			
 			imageObj.onload = function()
 			{canvas.drawImage(imageObj, opts['object'].margin[0], opts['object'].margin[1], opts['object']['image'].width, opts['object']['image'].height)}
 			imageObj.src = opts['object']['image'].src;
 		}
 		
-		if(opts['object']['text'])
-		{
+		if(opts['object']['text']){
 			canvas.font 		= opts['object']['text'].fontStyle +" "+ opts['object']['text'].size+"pt "+opts['object']['text'].font;
 			canvas.textAlign 	= opts['object']['text'].textAlign;
 			canvas.textBaseline = opts['object']['text'].verticalAlign;
@@ -169,9 +151,7 @@ $.fn.canvas2D = function(options)
 		}
 		
 		/* Obj props */
-		
-			canvas.fillStyle 		= opts['object'].color;
-		
+		canvas.fillStyle 		= opts['object'].color;
 		canvas.globalAlpha		= opts['object'].alpha;
 		canvas.strokeStyle 		= opts['object'].border;
 		canvas.lineWidth		= opts['object'].borderWidth;
@@ -179,30 +159,27 @@ $.fn.canvas2D = function(options)
 	}
 	
 	/* End */
-	if(opts['object'].color != false)
-	{canvas.closePath();
+	if(opts['object'].color != false){
+		canvas.closePath();
 		canvas.fill();
 	}
-	if(opts['object'].border != false)
-	{
+	if(opts['object'].border != false){
 		canvas.stroke();
 	}
 }
 
 
 $(".canvasExample").canvas2D({
-		object:
-		{
-			color:"#ff0000",
-			alpha:1,
-			borderWidth:15,
-			border:"black",
-			margin:[0,25],
-			circle:
-			{
-				size:50,
-				startAngle:0,
-				endAngle:180
-			}
+	object:	{
+		color:"#ff0000",
+		alpha:1,
+		borderWidth:15,
+		border:"black",
+		margin:[0,25],
+		circle:	{
+			size:50,
+			startAngle:0,
+			endAngle:180
 		}
-	});
+	}
+});
